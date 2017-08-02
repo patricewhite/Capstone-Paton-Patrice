@@ -12,7 +12,7 @@ function addResults(state, results) {
   state.results = results;
 }
 
-function addTeam(state, element){
+function addTeam(state, element) {
   state.pokeTeam.push(element);
 }
 //callback and AJAX
@@ -21,35 +21,35 @@ const pokeApiUrl = 'https://pokeapi.co/api/v2/';
 function getData(searchTerm, callback) {
   const query = searchTerm.toLowerCase();
 
-  if ($('#selectorId').val() === 'name'){
+  if ($('#selectorId').val() === 'name') {
 
-    $.getJSON(pokeApiUrl+'pokemon/'+query+'/', function(data){
+    $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
       addResults(appState, data);
       callback();
       //renderAbility(appState, $('.results'));
     });
   } else {
-    $.getJSON(pokeApiUrl+'ability/'+query+'/', function(data){
+    $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
       addResults(appState, data);
       callback();
-   //renderPoke(appState, $('.results'));
+      //renderPoke(appState, $('.results'));
     });
   }
 }
 
-function getPokemonDetails(searchTerm, callback){
+function getPokemonDetails(searchTerm, callback) {
   const query = searchTerm.toLowerCase();
 
-  $.getJSON(pokeApiUrl+'pokemon/'+query+'/', function(data){
+  $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
     addResults(appState, data);
     callback();
     //renderPokemonDetails(appState, $('.results'));
   });
 }
 
-function getAbilityDetails(searchTerm, callback){
+function getAbilityDetails(searchTerm, callback) {
   const query = searchTerm.toLowerCase();
-  $.getJSON(pokeApiUrl+'ability/'+query+'/', function(data){
+  $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
     addResults(appState, data);
     callback();
     //renderPoke(appState, $('.results'));
@@ -57,8 +57,8 @@ function getAbilityDetails(searchTerm, callback){
 }
 
 //render functions
-function renderAbility(state, element){
-  const abilityHTML = state.results.abilities.map(function(obj){
+function renderAbility(state, element) {
+  const abilityHTML = state.results.abilities.map(function(obj) {
     return `
 						<button class="ability-deets" type="button" name="ability" value="${obj.ability.name}">${obj.ability.name}</button>
 				`;
@@ -73,9 +73,10 @@ function renderAbility(state, element){
 			`);
 }
 
-function renderPoke(state, element){
+function renderPoke(state, element) {
 
-  const nameHTML = state.results.pokemon.map(function(obj){
+  const nameHTML = state.results.pokemon.map(function(obj) {
+    console.log('check', obj);
     return `
 				<div class="col-12">
 					<button class="deets" type="button" name="name" value="${obj.pokemon.name}">${obj.pokemon.name}</button>
@@ -83,7 +84,7 @@ function renderPoke(state, element){
 			`;
   });
 
-  const abilityDetails = state.results.effect_entries.map(function(obj){
+  const abilityDetails = state.results.effect_entries.map(function(obj) {
     return `
 		Effect: ${obj.effect}
 		`;
@@ -91,24 +92,24 @@ function renderPoke(state, element){
 
   element.html(`
 			<h2><u>${state.results.name}</u></h2>
-			<p>${abilityDetails}</p>
+			<p class="abilityDetails">${abilityDetails}</p>
 			<p><u>Pokemon with ${state.results.name}</u></p>
 			<div class="row">${nameHTML.join('')}</div>`);
 
 }
 
-function renderPokemonDetails(state, element){
-  const pokeAbility = state.results.abilities.map(function(obj){
+function renderPokemonDetails(state, element) {
+  const pokeAbility = state.results.abilities.map(function(obj) {
     return `<button class="ability-deets" type="button" name="ability" value="${obj.ability.name}">${obj.ability.name}</button>`;
   });
 
-  const pokeStats = state.results.stats.map(function(obj){
+  const pokeStats = state.results.stats.map(function(obj) {
     return `
 			<p>${obj.stat.name}: ${obj.base_stat}</p>
 			`;
   });
 
-  element.html( `
+  element.html(`
 		<div class="row">
 				<div class="col-12">
 					<p>Name: ${state.results.name}</p>
@@ -124,8 +125,8 @@ function renderPokemonDetails(state, element){
 }
 
 //event
-$(function watchSubmit(){
-  $('.js-search-form').submit(function(event){
+$(function watchSubmit() {
+  $('.js-search-form').submit(function(event) {
     event.preventDefault();
     const query = $('.js-query').val();
     getData(query, function() {
@@ -134,21 +135,21 @@ $(function watchSubmit(){
     });
   });
 
-	//listeners on check/button
+  //listeners on check/button
 
-  $('.results').on('click', '.deets', function(event){
+  $('.results').on('click', '.deets', function(event) {
     event.preventDefault();
     const query = $(event.currentTarget).val();
-    getPokemonDetails(query, function (){
+    getPokemonDetails(query, function() {
       renderPokemonDetails(appState, $('.results'));
     });
   });
 
-  $('.results').on('click', '.ability-deets', function(event){
+  $('.results').on('click', '.ability-deets', function(event) {
     event.preventDefault();
     const query = $(event.currentTarget).val();
     console.log(query);
-    getAbilityDetails(query, function(){
+    getAbilityDetails(query, function() {
       renderPoke(appState, $('.results'));
     });
   });
