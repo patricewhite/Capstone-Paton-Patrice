@@ -90,3 +90,11 @@ select {
   text-align: center;
   margin: 30px;
 }
+
+#loader {
+  display: none;
+}
+
+#loader .active {
+  display: block;
+}

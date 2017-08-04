@@ -24,23 +24,29 @@ function getData(searchTerm, callback) {
   if ($('#selectorId').val() === 'name') {
 
     $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
-      addResults(appState, data);
-      callback();
-      //renderAbility(appState, $('.results'));
-    });
+        $('#loader').removeClass('active');
+        addResults(appState, data);
+        callback();
+      })
+      .fail(function() {
+        $('#error').html(`${query} is not in the database`);
+      });
   } else {
-    $.getJSON(pokeApiUrl+'ability/'+ query +'/', function(data) {
-      addResults(appState, data);
-      callback();
-      //renderPoke(appState, $('.results'));
-    });
+    $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
+        $('#loader').removeClass('active');
+        addResults(appState, data);
+        callback();
+      })
+      .fail(function() {
+        $('#error').html(`${query} is not in the database`);
+      });
   }
 }
 
 function getPokemonDetails(searchTerm, callback) {
   const query = searchTerm.toLowerCase();
 
-  $.getJSON(pokeApiUrl+'pokemon/'+ query +'/', function(data) {
+  $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
     addResults(appState, data);
     callback();
     //renderPokemonDetails(appState, $('.results'));
@@ -50,7 +56,7 @@ function getPokemonDetails(searchTerm, callback) {
 function getAbilityDetails(searchTerm, callback) {
   debugger;
   const query = searchTerm.toLowerCase();
-  $.getJSON(pokeApiUrl+'ability/'+ query +'/', function(data) {
+  $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
     addResults(appState, data);
     callback();
     //renderPoke(appState, $('.results'));
@@ -59,17 +65,17 @@ function getAbilityDetails(searchTerm, callback) {
 
 //render functions
 function renderAbility(state, element) {
-  if(!state.results.abilities){
+  if (!state.results.abilities) {
     return;
-  }else{
-  const abilityHTML = state.results.abilities.map(function(obj) {
-    return `
+  } else {
+    const abilityHTML = state.results.abilities.map(function(obj) {
+      return `
 						<button class="ability-deets" type="button" name="ability" value="${obj.ability.name}">${obj.ability.name}</button>
 				`;
-  });
-  element.html(`
+    });
+    element.html(`
 			<div class="row>
-				<div class="col-12">
+				<div class="col-3">
 					<h3>Abilities</h3>
 					${abilityHTML}
 				</div>
@@ -79,25 +85,24 @@ function renderAbility(state, element) {
 }
 
 function renderPoke(state, element) {
-  if(!state.results.pokemon){
+  if (!state.results.pokemon) {
     return;
-  }else{
-  const nameHTML = state.results.pokemon.map(function(obj) {
-    console.log('check', obj);
-    return `
+  } else {
+    const nameHTML = state.results.pokemon.map(function(obj) {
+      return `
 				<div class="col-12">
 					<button class="deets" type="button" name="name" value="${obj.pokemon.name}">${obj.pokemon.name}</button>
 				</div>
 			`;
-  });
+    });
 
-  const abilityDetails = state.results.effect_entries.map(function(obj) {
-    return `
+    const abilityDetails = state.results.effect_entries.map(function(obj) {
+      return `
 		Effect: ${obj.effect}
 		`;
-  });
+    });
 
-  element.html(`
+    element.html(`
 			<h2><u>${state.results.name}</u></h2>
 			<p class="abilityDetails">${abilityDetails}</p>
 			<p><u>Pokemon with ${state.results.name}</u></p>
@@ -136,6 +141,7 @@ $(function watchSubmit() {
   $('.js-search-form').submit(function(event) {
     event.preventDefault();
     const query = $('.js-query').val();
+    $('#loader').addClass('active');
     getData(query, function() {
       renderAbility(appState, $('.results'));
       renderPoke(appState, $('.results'));
