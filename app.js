@@ -24,21 +24,26 @@ function getData(searchTerm, callback) {
   if ($('#selectorId').val() === 'name') {
 
     $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
+        $('#error').addClass('remove');
         $('#loader').removeClass('active');
         addResults(appState, data);
         callback();
       })
       .fail(function() {
+        $('#loader').removeClass('active');
         $('#error').html(`${query} is not in the database`);
       });
   } else {
     $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
+        $('#error').addClass('remove');
         $('#loader').removeClass('active');
         addResults(appState, data);
         callback();
       })
       .fail(function() {
+        $('#loader').removeClass('active');
         $('#error').html(`${query} is not in the database`);
+
       });
   }
 }
@@ -49,17 +54,14 @@ function getPokemonDetails(searchTerm, callback) {
   $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
     addResults(appState, data);
     callback();
-    //renderPokemonDetails(appState, $('.results'));
   });
 }
 
 function getAbilityDetails(searchTerm, callback) {
-  debugger;
   const query = searchTerm.toLowerCase();
   $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
     addResults(appState, data);
     callback();
-    //renderPoke(appState, $('.results'));
   });
 }
 
@@ -142,6 +144,7 @@ $(function watchSubmit() {
     event.preventDefault();
     const query = $('.js-query').val();
     $('#loader').addClass('active');
+    $('#error').removeClass('remove');
     getData(query, function() {
       renderAbility(appState, $('.results'));
       renderPoke(appState, $('.results'));

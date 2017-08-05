@@ -95,6 +95,15 @@ select {
   display: none;
 }
 
-#loader .active {
+#loader.active {
   display: block;
+  text-align: center;
+}
+
+#error.remove {
+  display: none;
+}
+
+.result.none {
+  display: none;
 }
