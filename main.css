@@ -77,7 +77,6 @@ select {
 }
 
 .deets {
-  display: inline;
   height: 50px;
   margin-bottom: 10px;
 }
@@ -106,4 +105,8 @@ select {
 
 .result.none {
   display: none;
+}
+
+main .row {
+  margin-bottom: 20px;
 }

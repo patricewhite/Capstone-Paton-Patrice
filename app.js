@@ -91,10 +91,9 @@ function renderPoke(state, element) {
     return;
   } else {
     const nameHTML = state.results.pokemon.map(function(obj) {
+      console.log(obj);
       return `
-				<div class="col-12">
 					<button class="deets" type="button" name="name" value="${obj.pokemon.name}">${obj.pokemon.name}</button>
-				</div>
 			`;
     });
 
@@ -108,7 +107,9 @@ function renderPoke(state, element) {
 			<h2><u>${state.results.name}</u></h2>
 			<p class="abilityDetails">${abilityDetails}</p>
 			<p><u>Pokemon with ${state.results.name}</u></p>
-			<div class="row">${nameHTML.join('')}</div>`);
+			<div class='row'>
+          ${nameHTML.join('')}
+      </div>`);
   }
 }
 
@@ -156,7 +157,7 @@ $(function watchSubmit() {
   $('.results').on('click', '.deets', function(event) {
     event.preventDefault();
     const query = $(event.currentTarget).val();
-    console.log(query);
+    console.log('pokemon', query);
     getPokemonDetails(query, function() {
       renderPokemonDetails(appState, $('.results'));
     });
@@ -165,14 +166,10 @@ $(function watchSubmit() {
   $('.results').on('click', '.ability-deets', function(event) {
     event.preventDefault();
     const query = $(event.currentTarget).val();
-    console.log(query);
+    console.log('ability', query);
     getAbilityDetails(query, function() {
       renderPoke(appState, $('.results'));
     });
   });
 
 });
-
-//do css
-//add no results error
-//change input to button
