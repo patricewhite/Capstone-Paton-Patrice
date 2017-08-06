@@ -43,6 +43,7 @@ legend {
 button {
   font-family: 'Amaranth', sans-serif;
   font-size: 20px;
+  cursor: pointer;
 }
 
 form {
@@ -61,6 +62,7 @@ select {
   font-family: 'Amaranth', sans-serif;
   height: 50px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .submit {
@@ -97,6 +99,30 @@ select {
 #loader.active {
   display: block;
   text-align: center;
+  -webkit-animation: shake 0.1s ease-in-out 0.1s infinite alternate;
+  font-size: 20px;
+  color: white;
+}
+
+@-webkit-keyframes shake {
+  from {
+    -webkit-transform: rotate(10deg);
+  }
+  to {
+    -webkit-transform-origin: center center;
+    -webkit-transform: rotate(-10deg);
+  }
+  #error.remove {
+    display: none;
+  }
+  .result.none {
+    display: none;
+  }
+  main .row {
+    margin-bottom: 20px;
+  }
+  : center center;
+  -webkit-transform: rotate(-10deg);
 }
 
 #error.remove {
@@ -107,6 +133,33 @@ select {
   display: none;
 }
 
+main .row {
+  margin-bottom: 20px;
+}
+
+: center center;
+-webkit-transform: rotate(-10deg);
+
+}
+#error.remove {
+  display: none;
+}
+.result.none {
+  display: none;
+}
+main .row {
+  margin-bottom: 20px;
+}
+: center center;
+-webkit-transform: rotate(-10deg);
+
+}
+#error.remove {
+  display: none;
+}
+.result.none {
+  display: none;
+}
 main .row {
   margin-bottom: 20px;
 }
