@@ -24,8 +24,8 @@ function getData(searchTerm, callback) {
   if ($('#selectorId').val() === 'name') {
 
     $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
-        $('#error').addClass('remove');
         $('#loader').removeClass('active');
+        $('#error').addClass('remove');
         addResults(appState, data);
         callback();
       })
@@ -35,8 +35,8 @@ function getData(searchTerm, callback) {
       });
   } else {
     $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
-        $('#error').addClass('remove');
         $('#loader').removeClass('active');
+        $('#error').addClass('remove');
         addResults(appState, data);
         callback();
       })
@@ -150,6 +150,7 @@ $(function watchSubmit() {
       renderAbility(appState, $('.results'));
       renderPoke(appState, $('.results'));
     });
+    $('.js-query').val('');
   });
 
   //listeners on check/button
