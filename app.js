@@ -24,27 +24,25 @@ function getData(searchTerm, callback) {
   if ($('#selectorId').val() === 'name') {
 
     $.getJSON(pokeApiUrl + 'pokemon/' + query + '/', function(data) {
-        $('#loader').removeClass('active');
-        $('#error').addClass('remove');
-        addResults(appState, data);
-        callback();
-      })
-      .fail(function() {
-        $('#loader').removeClass('active');
-        $('#error').html(`${query} is not in the database`);
-      });
+      $('#loader').removeClass('active');
+      $('#error').addClass('remove');
+      addResults(appState, data);
+      callback();
+    }).fail(function() {
+      $('#loader').removeClass('active');
+      $('#error').html(`${query} is not in the database`);
+    });
   } else {
     $.getJSON(pokeApiUrl + 'ability/' + query + '/', function(data) {
-        $('#loader').removeClass('active');
-        $('#error').addClass('remove');
-        addResults(appState, data);
-        callback();
-      })
-      .fail(function() {
-        $('#loader').removeClass('active');
-        $('#error').html(`${query} is not in the database`);
+      $('#loader').removeClass('active');
+      $('#error').addClass('remove');
+      addResults(appState, data);
+      callback();
+    }).fail(function() {
+      $('#loader').removeClass('active');
+      $('#error').html(`${query} is not in the database`);
 
-      });
+    });
   }
 }
 
@@ -126,9 +124,9 @@ function renderPokemonDetails(state, element) {
 
   element.html(`
 		<div class="row">
-				<div class="col-12">
-					<p>Name: ${state.results.name}</p>
-					<img src="${state.results.sprites.front_default}">
+				<div class="col-12 box">
+					<h1>${state.results.name}</h1>
+					<img src="${state.results.sprites.front_default}" height="150" width="150">
 					<p>PokeDex Id Number: ${state.results.id}
 					<p><u>Abilities</u></p>
 					<div>${pokeAbility.join('')}</div>

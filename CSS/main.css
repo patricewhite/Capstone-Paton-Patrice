@@ -92,6 +92,15 @@ select {
   margin: 30px;
 }
 
+.box {
+  border: 20px solid #00293F;
+  background-color: #D62828;
+}
+
+.box h1 {
+  padding-top: 5px;
+}
+
 #loader {
   display: none;
 }
