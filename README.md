@@ -19,5 +19,5 @@ Development Tools: Chrome Developer Tools
 #### Click on Pokemon <br/>
 ![After Clicking on Pokemon Name ](Pictures/ClickOnPokemon.png)<br/>
 
-##Deployment
+## Deployment
 [Check it out here](https://patricewhite.github.io/Capstone-Paton-Patrice/)
