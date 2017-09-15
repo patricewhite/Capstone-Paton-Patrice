@@ -1,4 +1,4 @@
-#Gotta Know 'Em All
+# Gotta Know 'Em All
 Gotta Know 'Em All is an app gives you inforamtion about every Pokemon. It allows you to search a Pokemon or a Pokemon’s ability. If you search a Pokemon's ability you will be shown a description of the ability.If you search a Pokemon's name you will be shown information on the Pokemon.
 
 ## Technology Used
@@ -19,5 +19,5 @@ Development Tools: Chrome Developer Tools
 #### Click on Pokemon <br/>
 ![After Clicking on Pokemon Name ](Pictures/ClickOnPokemon.png)<br/>
 
-##Deployment 
+##Deployment
 [Check it out here](https://patricewhite.github.io/Capstone-Paton-Patrice/)
