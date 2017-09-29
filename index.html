@@ -11,37 +11,34 @@
 </head>
 
 <body>
-  <div class="container">
-
-    <nav>
-      <img clss="banner" src="Pictures/banner.jpg" alt="">
-    </nav>
-    <div class="row">
-      <div class="col-12">
-        <h1>Gotta Know 'Em All</h1>
-        <legend>Welome to the best Pokemon Go companion. Here you can find the pokemon and their abilities. Have fun learning about some of the awesome things they can do!</legend>
-        <form class="js-search-form" action="index.html" method="post">
-          <input class="js-query" placeholder="ie(name:oddish ability: static)" type="text" name="" value="">
-          <select id="selectorId">
+  <nav>
+    <img class="banner" src="Pictures/banner.jpg" alt="">
+  </nav>
+  <div class="row">
+    <div class="col-12">
+      <h1>Gotta Know 'Em All</h1>
+      <legend>Welcome to the best Pokemon Go companion. Here you can find the pokemon and their abilities. Have fun learning about some of the awesome things they can do!</legend>
+      <form class="js-search-form" action="index.html" method="post">
+        <input class="js-query" placeholder="ie(name:oddish ability: static)" type="text" name="" value="">
+        <select id="selectorId">
       					<option value="name" selected="selected" >Search by Name</option>
       					<option value="ability">Search by Ability</option>
       				</select>
-          <button class="submit" type="submit" name="button">Gotta find em all!</button>
-          <div id="error">
+        <button class="submit" type="submit" name="button">Gotta find em all!</button>
+        <div id="error">
 
-          </div>
-        </form>
-        <div id="loader">
-          L o a d i n g...
         </div>
+      </form>
+      <div id="loader">
+        L o a d i n g...
       </div>
     </div>
+  </div>
 
-    <div class="results">
-
-    </div>
+  <div class="results">
 
   </div>
+
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
   </script>
   <script type="text/javascript" src="app.js">
