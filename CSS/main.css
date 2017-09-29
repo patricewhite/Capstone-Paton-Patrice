@@ -1,14 +1,8 @@
-.container {
-  margin: 0 auto;
-  width: 1280px;
-}
-
 nav img {
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
-  /*position: fixed;*/
 }
 
 body {
