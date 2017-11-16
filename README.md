@@ -5,7 +5,7 @@ Gotta Know 'Em All is an app gives you inforamtion about every Pokemon. It allow
 FrontEnd: CSS, JavaScript, Jquery, PokiApi <br/>
 Development Tools: Chrome Developer Tools
 
-##ScreenShots
+## ScreenShots
 
 #### Start Page <br/>
 ![Before Searching for ability or Pokemon](Pictures/StartPage.png)<br/>
